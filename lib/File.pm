@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.5 2004/09/03 02:25:49 comdog Exp $
+# $Id: File.pm,v 1.6 2004/09/05 20:45:35 comdog Exp $
 package Test::File;
 use strict;
 
@@ -14,7 +14,7 @@ use Test::Builder;
 	file_not_writeable_ok file_executable_ok file_not_executable_ok
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.5 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -32,7 +32,11 @@ This modules provides a collection of test utilities for
 file attributes.
 
 Some file attributes depend on the owner of the process testing
-the file in the same way the file test operators do.
+the file in the same way the file test operators do.  For instance,
+root (or super-user or Administrator) may always be able to read
+files no matter the permissions.  
+
+Some attributes don't make sense outside of Unix, either.
 
 =head2 Functions
 

@@ -1,4 +1,4 @@
-# $Id: setup.t,v 1.2 2004/07/04 17:48:33 comdog Exp $
+# $Id: setup.t,v 1.3 2004/09/05 20:45:35 comdog Exp $
 use strict;
 
 use Test::More tests => 5;
@@ -21,7 +21,7 @@ foreach my $file ( @files )
 	open my $fh, "> $file";
 	close $fh;
 	}
-	
+
 my $count = chmod 0400, 'readable', 'not_writeable', 'not_executable';
 is( $count, 3 ) or print 'bail out! Could not make files readable';
 

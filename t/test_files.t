@@ -1,4 +1,4 @@
-# $Id: test_files.t,v 1.1 2002/09/23 19:25:10 comdog Exp $
+# $Id: test_files.t,v 1.3 2004/09/05 20:47:27 comdog Exp $
 use strict;
 
 use Test::Builder::Tester;
@@ -46,18 +46,26 @@ test_out( 'ok 1 - readable is readable' );
 file_readable_ok( 'readable' );
 test_test();
 
+SKIP: {
+skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
 test_out( 'ok 1 - writeable is not readable' );
 file_not_readable_ok( 'writeable' );
 test_test();
+};
 
 test_out( 'ok 1 - writeable is writeable' );
 file_writeable_ok( 'writeable' );
 test_test();
 
+SKIP: {
+skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
 test_out( 'ok 1 - readable is not writeable' );
 file_not_writeable_ok( 'readable' );
 test_test();
+};
 
+SKIP: {
+skip "Windows isn't Unix", 2 if( $^O =~ /Win/ and $^O ne 'darwin' );
 test_out( 'ok 1 - executable is executable' );
 file_executable_ok( 'executable' );
 test_test();
@@ -65,5 +73,11 @@ test_test();
 test_out( 'ok 1 - not_executable is not executable' );
 file_not_executable_ok( 'not_executable' );
 test_test();
+};
 
 chdir '..' or print "bail out! Could not change directories: $!";
+
+END {
+unlink glob( "test_files/*" );
+rmdir "test_files";
+}
