@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.2 2004/07/04 18:00:36 comdog Exp $
+# $Id: Makefile.PL,v 1.3 2004/09/03 02:24:15 comdog Exp $
 use ExtUtils::MakeMaker;
 
 eval "use Test::Manifest";
@@ -34,6 +34,6 @@ WriteMakefile
 			'lib/file.pm' => '$(INST_MAN3DIR)/Test::File.3',
 			},
 	
-		clean  => { FILES    => q|Test::File-* test_files| },
+		clean  => { FILES    => q|Test-File-* test_files| },
         );
 
