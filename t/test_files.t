@@ -1,4 +1,4 @@
-# $Id$
+# $Id: test_files.t,v 1.1 2002/09/23 19:25:10 comdog Exp $
 use strict;
 
 use Test::Builder::Tester;

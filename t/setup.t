@@ -1,4 +1,4 @@
-# $Id$
+# $Id: setup.t,v 1.2 2004/07/04 17:48:33 comdog Exp $
 use strict;
 
 use Test::More tests => 5;
@@ -37,11 +37,11 @@ truncate 'max_file', 10;
 truncate 'min_file',  0;
 
 {
-open my $fh, '> min_file' or "bail out! Could not write to min_file: $!";
+open my $fh, '> min_file' or print "bail out! Could not write to min_file: $!";
 print $fh "x" x 53;
 close $fh;
 }
 is( -s 'min_file', 53 );
 
-chdir '..' or "bail out! Could not change back to original directory: $!";
+chdir '..' or print "bail out! Could not change back to original directory: $!";
 pass();
