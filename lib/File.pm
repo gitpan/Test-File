@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.8 2005/01/06 23:35:52 comdog Exp $
+# $Id: File.pm,v 1.9 2005/03/08 22:57:34 comdog Exp $
 package Test::File;
 use strict;
 
@@ -16,7 +16,7 @@ use Test::Builder;
 	file_mode_is file_mode_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.8 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -30,18 +30,18 @@ use Test::File;
 
 =head1 DESCRIPTION
 
-This modules provides a collection of test utilities for
-file attributes.
+This modules provides a collection of test utilities for file
+attributes.
 
-Some file attributes depend on the owner of the process testing
-the file in the same way the file test operators do.  For instance,
-root (or super-user or Administrator) may always be able to read
-files no matter the permissions.  
+Some file attributes depend on the owner of the process testing the
+file in the same way the file test operators do.  For instance, root
+(or super-user or Administrator) may always be able to read files no
+matter the permissions.
 
-Some attributes don't make sense outside of Unix, either, so
-some tests automatically skip if they think they won't work on
-the platform.  If you have a way to make these functions work
-on Windows, for instance, please send me a patch. :)
+Some attributes don't make sense outside of Unix, either, so some
+tests automatically skip if they think they won't work on the
+platform.  If you have a way to make these functions work on Windows,
+for instance, please send me a patch. :)
 
 =head2 Functions
 
