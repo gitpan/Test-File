@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.9 2005/03/08 22:57:34 comdog Exp $
+# $Id: File.pm,v 1.10 2005/06/05 13:23:56 comdog Exp $
 package Test::File;
 use strict;
 
@@ -16,7 +16,7 @@ use Test::Builder;
 	file_mode_is file_mode_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.10 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -58,6 +58,7 @@ sub _normalize
 	
 sub _win32
 	{
+	return 0 if $^O eq 'darwin';
 	return $^O =~ m/Win/;
 	}
 	

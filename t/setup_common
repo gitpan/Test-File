@@ -1,7 +1,5 @@
-# $Id: setup.t,v 1.3 2004/09/05 20:45:35 comdog Exp $
+# $Id: setup_common,v 1.1 2005/06/05 13:23:56 comdog Exp $
 use strict;
-
-use Test::More tests => 5;
 
 unless( -d 'test_files' )
 	{
