@@ -1,7 +1,8 @@
-# $Id: test_manifest,v 1.5 2005/06/05 13:23:56 comdog Exp $
+# $Id: test_manifest,v 1.6 2005/12/26 02:02:43 comdog Exp $
 load.t
 pod.t
 pod_coverage.t
-prereq.t
+#prereq.t
 normalize.t
 test_files.t
+owner.t

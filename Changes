@@ -1,4 +1,10 @@
-# $Id: Changes,v 1.9 2005/06/05 22:36:21 comdog Exp $
+# $Id: Changes,v 1.10 2005/10/02 10:43:46 comdog Exp $
+
+1.11 - Sun Oct  2 05:42:41 2005
+* Some strings were mistakenly single-quoted. I meant to interpolate but
+didn't use double quotes. Should I lose my Perl license? :)
+
+* Upgrade to get the interpolated error messages.
 
 1.10 - Sun Jun  5 17:34:54 2005
 * Fixed Windows testing with patch from Tom Metro. Now that I have a
