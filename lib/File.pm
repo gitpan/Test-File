@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.12 2005/12/26 02:02:43 comdog Exp $
+# $Id: File.pm,v 1.13 2005/12/31 21:33:58 comdog Exp $
 package Test::File;
 use strict;
 
@@ -6,7 +6,7 @@ use base qw(Exporter);
 use vars qw(@EXPORT $VERSION);
 
 use File::Spec;
-use Test::Builder;
+use Test::Builder 0.32;
 
 @EXPORT = qw(
 	file_exists_ok file_not_exists_ok
@@ -21,7 +21,7 @@ use Test::Builder;
 	owner_is owner_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.12 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.13 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -958,7 +958,7 @@ Dylan Martin added C<owner_is> and C<owner_isnt>
 
 =head1 COPYRIGHT
 
-Copyright 2002-2005, brian d foy, All Rights Reserved
+Copyright 2002-2006, brian d foy, All Rights Reserved
 
 You may use, modify, and distribute this under the same terms
 as Perl itself.

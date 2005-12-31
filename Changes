@@ -1,4 +1,7 @@
-# $Id: Changes,v 1.10 2005/10/02 10:43:46 comdog Exp $
+# $Id: Changes,v 1.11 2005/12/26 02:03:29 comdog Exp $
+
+1.12 - Sun Dec 25 18:02:58 2005
+	* Added the tests owner_is() and owner_isnt() from Dylan Martin
 
 1.11 - Sun Oct  2 05:42:41 2005
 * Some strings were mistakenly single-quoted. I meant to interpolate but
