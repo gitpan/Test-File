@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.14 2006/03/08 18:34:08 comdog Exp $
+# $Id: File.pm,v 1.15 2006/05/18 02:40:05 comdog Exp $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.14 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.15 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -1066,6 +1066,8 @@ members of the project can shepherd this module appropriately.
 =head1 AUTHOR
 
 brian d foy, C<< <bdfoy@cpan.org> >>
+
+=head1 CREDITS
 
 Shawn Sorichetti C<< <ssoriche@coloredblocks.net> >> provided
 some functions.
