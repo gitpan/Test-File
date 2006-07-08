@@ -1,8 +1,8 @@
-# $Id: links.t,v 1.1 2005/10/02 10:41:47 comdog Exp $
+# $Id: links.t,v 1.2 2006/07/08 20:36:35 comdog Exp $
 use strict;
 
 use Test::Builder::Tester;
-use Test::More tests => 24;
+use Test::More tests => 5;
 use Test::File;
 
 =pod

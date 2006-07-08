@@ -1,4 +1,8 @@
-# $Id: Changes,v 1.14 2006/05/18 02:42:47 comdog Exp $
+# $Id: Changes,v 1.15 2006/07/08 20:43:07 comdog Exp $
+
+1.16 - Sat Jul  8 15:38:38 2006
+	* updated the plan for links.t to have the right number of tests
+	* no need to upgrade if you already have this installed.
 
 1.15 - Wed May 17 21:42:09 2006
 	* Updated the distro for copyright and kwalitee. No need to upgrade.
