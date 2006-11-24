@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.16 2006/07/08 20:37:22 comdog Exp $
+# $Id: File.pm,v 1.17 2006/11/24 22:23:21 comdog Exp $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.16 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.17 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -1078,7 +1078,9 @@ Dylan Martin added C<owner_is> and C<owner_isnt>
 
 =head1 COPYRIGHT
 
-Copyright 2002-2006, brian d foy, All Rights Reserved
+Copyright 2002-2007, brian d foy, All Rights Reserved
+
+=head1 LICENSE
 
 You may use, modify, and distribute this under the same terms
 as Perl itself.

@@ -1,4 +1,9 @@
-# $Id: Changes,v 1.15 2006/07/08 20:43:07 comdog Exp $
+# $Id: Changes,v 1.16 2006/11/24 22:31:23 comdog Exp $
+
+1.17 - Fri Nov 24 14:30:05 2006
+	* Updated tests for Test::More 0.65's change in error reporting
+	* Added LICENSE field to docs
+	* No need to upgrade it you already have this installed
 
 1.16 - Sat Jul  8 15:38:38 2006
 	* updated the plan for links.t to have the right number of tests

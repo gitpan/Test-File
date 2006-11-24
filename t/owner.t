@@ -1,4 +1,4 @@
-# $Id: owner.t,v 1.2 2006/03/08 18:34:08 comdog Exp $
+# $Id: owner.t,v 1.4 2006/11/24 22:28:56 comdog Exp $
 use strict;
 
 use Test::Builder::Tester;
@@ -85,7 +85,7 @@ test_diag(
 	"File [$filename] belongs to $owner_name ($owner_uid), not $other_name " .
 	"($other_uid)\n" .
 	"#   Failed test '$name'\n". 
-	"#   in t/owner.t at line " . line_num(+6) . "." 
+	"#   at t/owner.t line " . line_num(+6) . "." 
 	);
 owner_is( $filename, $other_name, $name );
 test_test( $name );
@@ -96,7 +96,7 @@ test_out( "not ok 1 - $name");
 test_diag( 
 	"File [$filename] belongs to $owner_name ($owner_uid)\n" .
 	"#   Failed test '$name'\n" . 
-	"#   in t/owner.t at line " . line_num(+5) . "."
+	"#   at t/owner.t line " . line_num(+5) . "."
 	);
 owner_isnt( $filename, $owner_name, "Intentional owner_isnt failure" );
 test_test( "Intentional owner_isnt failure");
@@ -108,7 +108,7 @@ test_diag(
 	"$other_group_name " .
 	"($other_gid)\n" .
 	"#   Failed test '$name'\n". 
-	"#   in t/owner.t at line " . line_num(+7) . "." 
+	"#   at t/owner.t line " . line_num(+7) . "." 
 	);
 group_is( $filename, $other_group_name, $name );
 test_test( $name );
@@ -119,7 +119,7 @@ test_out( "not ok 1 - $name");
 test_diag( 
 	"File [$filename] belongs to $file_group_name ($file_gid)\n" .
 	"#   Failed test '$name'\n" . 
-	"#   in t/owner.t at line " . line_num(+5) . "."
+	"#   at t/owner.t line " . line_num(+5) . "."
 	);
 group_isnt( $filename, $file_group_name, $name );
 test_test( $name );

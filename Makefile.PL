@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.6 2005/12/31 21:33:58 comdog Exp $
+# $Id: Makefile.PL,v 1.8 2006/11/24 22:23:21 comdog Exp $
 use ExtUtils::MakeMaker;
 
 eval "use Test::Manifest 1.14";
@@ -10,9 +10,9 @@ WriteMakefile
 	'VERSION_FROM'   => 'lib/File.pm',
 
 	'PREREQ_PM' => {
-		'Test::More'            => '0',
-		'Test::Builder::Tester' => '0',
-		'Test::Builder'         => '0.32',
+		'Test::More'            => '0.65',
+		'Test::Builder::Tester' => '1.04',
+		'Test::Builder'         => '0.33',
 		},
 
 	'PM'        => {
