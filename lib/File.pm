@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.17 2006/11/24 22:23:21 comdog Exp $
+# $Id: File.pm,v 1.18 2007/01/10 04:47:35 comdog Exp $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.17 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.18 $ =~ /(\d+)\.(\d+)/;
 
 my $Test = Test::Builder->new();
 
@@ -1076,15 +1076,14 @@ Tom Metro helped me figure out some Windows capabilities.
 
 Dylan Martin added C<owner_is> and C<owner_isnt>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2007, brian d foy, All Rights Reserved
+Copyright (c) 2002-2007 brian d foy.  All rights reserved.
 
-=head1 LICENSE
-
-You may use, modify, and distribute this under the same terms
-as Perl itself.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
+
 
 "The quick brown fox jumped over the lazy dog";
