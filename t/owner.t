@@ -1,4 +1,4 @@
-# $Id: owner.t,v 1.4 2006/11/24 22:28:56 comdog Exp $
+# $Id: owner.t 1950 2006-11-24 22:28:56Z comdog $
 use strict;
 
 use Test::Builder::Tester;

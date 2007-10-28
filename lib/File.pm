@@ -1,4 +1,4 @@
-# $Id: File.pm,v 1.18 2007/01/10 04:47:35 comdog Exp $
+# $Id: File.pm 2342 2007-10-28 01:53:12Z comdog $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.18 $ =~ /(\d+)\.(\d+)/;
+$VERSION = 1.19;
 
 my $Test = Test::Builder->new();
 

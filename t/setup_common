@@ -1,4 +1,4 @@
-# $Id: setup_common,v 1.2 2006/03/15 15:55:51 comdog Exp $
+# $Id: setup_common 1743 2006-03-15 15:55:51Z comdog $
 use strict;
 
 unless( -d 'test_files' )

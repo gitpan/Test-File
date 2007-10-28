@@ -1,4 +1,4 @@
-# $Id: test_files.t,v 1.8 2005/10/02 10:40:11 comdog Exp $
+# $Id: test_files.t 1675 2005-10-02 10:40:11Z comdog $
 use strict;
 
 use Test::Builder::Tester;

@@ -1,4 +1,4 @@
-# $Id: setup.t,v 1.4 2006/03/15 15:55:51 comdog Exp $
+# $Id: setup.t 1743 2006-03-15 15:55:51Z comdog $
 use strict;
 
 use Test::More tests => 5;

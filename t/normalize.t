@@ -1,4 +1,4 @@
-# $Id: normalize.t,v 1.1 2005/01/06 23:35:53 comdog Exp $
+# $Id: normalize.t 1553 2005-01-06 23:35:53Z comdog $
 
 use Test::More tests => 9;
 

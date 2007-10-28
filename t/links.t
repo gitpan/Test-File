@@ -1,4 +1,4 @@
-# $Id: links.t,v 1.2 2006/07/08 20:36:35 comdog Exp $
+# $Id: links.t 1882 2006-07-08 20:36:35Z comdog $
 use strict;
 
 use Test::Builder::Tester;
