@@ -1,4 +1,4 @@
-# $Id: File.pm 2342 2007-10-28 01:53:12Z comdog $
+# $Id: File.pm 2356 2007-10-30 15:11:12Z comdog $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = 1.19;
+$VERSION = 1.21;
 
 my $Test = Test::Builder->new();
 
@@ -191,7 +191,7 @@ sub file_not_empty_ok($;$)
 	my $filename = _normalize( shift );
 	my $name     = shift || "$filename is not empty";
 
-	my $ok = not -z $filename;
+	my $ok = -e $filename && not -z _;
 
 	if( $ok )
 		{

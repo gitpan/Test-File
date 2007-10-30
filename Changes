@@ -1,4 +1,12 @@
-# $Id: Changes 2343 2007-10-28 01:53:55Z comdog $
+# $Id: Changes 2357 2007-10-30 15:12:01Z comdog $
+
+1.21 - Tue Oct 30 11:11:49 2007
+	* Fix RT #30346 ( file_not_empty_ok passes if file doesn't exist)
+	* require 5.006 from now on
+
+1.02 - Tue Oct 30 11:08:57 2007
+	* Fix RT #30346 ( file_not_empty_ok passes if file doesn't exist)
+	* require 5.006 from now on
 
 1.19 - Sat Oct 27 20:53:47 2007
 	* distro cleanups after moving from CVS to SVN
