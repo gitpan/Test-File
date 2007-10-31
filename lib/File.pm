@@ -1,4 +1,4 @@
-# $Id: File.pm 2356 2007-10-30 15:11:12Z comdog $
+# $Id: File.pm 2358 2007-10-31 23:40:00Z comdog $
 package Test::File;
 use strict;
 
@@ -22,7 +22,11 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = 1.21;
+$VERSION = '1.22';
+
+{
+use warnings;
+}
 
 my $Test = Test::Builder->new();
 
@@ -1084,6 +1088,5 @@ This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
 
 "The quick brown fox jumped over the lazy dog";
