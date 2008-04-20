@@ -1,4 +1,10 @@
-# $Id: Changes 2359 2007-10-31 23:44:57Z comdog $
+# $Id: Changes 2528 2008-04-20 20:00:11Z comdog $
+
+1.22_01 - Sun Apr 20 14:58:41 2008
+	* [BUG FIX] owner_is and group_is were passing with non-existent 
+	users and groups. Now I check the arguments to see if they
+	actually exist before I test. This is a developer release to let
+	CPAN Testers take a whack at it first.
 
 1.22 - Wed Oct 31 19:40:23 2007
 	* fixed problem with file path separators in t/rt/30346.t

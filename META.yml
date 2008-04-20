@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Test-File
-version:             1.22
+version:             1.22_01
 abstract:            Check file attributes
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.36
