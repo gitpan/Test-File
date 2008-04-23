@@ -1,4 +1,4 @@
-# $Id: File.pm 2527 2008-04-20 19:58:12Z comdog $
+# $Id: File.pm 2531 2008-04-23 18:10:10Z comdog $
 package Test::File;
 use strict;
 
@@ -22,7 +22,7 @@ use Test::Builder;
 	group_is group_isnt
 	);
 
-$VERSION = '1.22_01';
+$VERSION = '1.23';
 
 {
 use warnings;

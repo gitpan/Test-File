@@ -1,4 +1,8 @@
-# $Id: Changes 2528 2008-04-20 20:00:11Z comdog $
+# $Id: Changes 2532 2008-04-23 18:11:19Z comdog $
+
+1.23 - Wed Apr 23 13:10:39 2008
+	* [BUG FIX] owner_is and group_is now fail if the owner or
+	group does not exist.
 
 1.22_01 - Sun Apr 20 14:58:41 2008
 	* [BUG FIX] owner_is and group_is were passing with non-existent 
