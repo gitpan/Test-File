@@ -1,4 +1,11 @@
-# $Id: Changes 2532 2008-04-23 18:11:19Z comdog $
+# $Id: Changes 2538 2008-05-20 20:00:54Z comdog $
+
+1.24 - Tue May 20 21:59:19 2008
+	* David Wheeler sent a patch to add file_line_count_is, so
+	I also added file_line_count_isnt and file_line_count_between.
+	* There aren't any other improvements, so you don't need to
+	upgrade unless you want the new functions.
+	:wq
 
 1.23 - Wed Apr 23 13:10:39 2008
 	* [BUG FIX] owner_is and group_is now fail if the owner or
