@@ -1,8 +1,8 @@
-# $Id: test_files.t 2536 2008-05-20 19:54:36Z comdog $
+# $Id: test_files.t 2539 2008-05-24 11:26:48Z comdog $
 use strict;
 
 use Test::Builder::Tester;
-use Test::More tests => 36;
+use Test::More tests => 37; # includes those in t/setup_common
 use Test::File;
 
 =pod
@@ -50,9 +50,18 @@ test_test();
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Line count
-{
+SKIP: {
 my $file  = 'min_file';
-my $lines = 2;
+
+diag( "min_file doesn't exist" )  unless -e $file;
+diag( "min_file isn't readable" ) unless -r $file;
+
+my $tests = 8;
+#unlink $file;
+
+skip "$file is missing!", $tests unless -r $file;
+
+my $lines  = 2;
 my $linesm = $lines - 1;
 my $linesp = $lines + 1;
 

@@ -1,4 +1,4 @@
-# $Id: links.t 1882 2006-07-08 20:36:35Z comdog $
+# $Id: links.t 2539 2008-05-24 11:26:48Z comdog $
 use strict;
 
 use Test::Builder::Tester;
@@ -19,3 +19,8 @@ SKIP: {
     skip "This system does't do symlinks", 5 unless $can_symlink;
     require "t/setup_common";
 };
+
+END {
+unlink glob( "test_files/*" );
+rmdir "test_files";
+}

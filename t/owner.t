@@ -1,4 +1,4 @@
-# $Id: owner.t 2527 2008-04-20 19:58:12Z comdog $
+# $Id: owner.t 2539 2008-05-24 11:26:48Z comdog $
 use strict;
 
 use Test::Builder::Tester;
@@ -184,3 +184,7 @@ test_diag(
 group_isnt( $filename, $file_group_name, $name );
 test_test( $name );
 
+END {
+unlink glob( "test_files/*" );
+rmdir "test_files";
+}

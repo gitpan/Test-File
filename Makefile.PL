@@ -1,4 +1,4 @@
-# $Id: Makefile.PL 2353 2007-10-30 15:05:30Z comdog $
+# $Id: Makefile.PL 2539 2008-05-24 11:26:48Z comdog $
 use ExtUtils::MakeMaker;
 
 require 5.006;
@@ -18,6 +18,7 @@ WriteMakefile
 		'Test::More'            => '0.65',
 		'Test::Builder::Tester' => '1.04',
 		'Test::Builder'         => '0.33',
+		'Test::Manifest'        => '1.14',
 		},
 
 	'PM'        => {
