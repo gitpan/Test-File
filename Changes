@@ -1,4 +1,8 @@
-# $Id: Changes 2540 2008-05-24 11:28:08Z comdog $
+# $Id: Changes 2543 2008-05-25 00:09:53Z comdog $
+
+1.24_02 - Sun May 25 02:09:24 2008
+	* Add a binmode before writing to files so they come out right
+	on Windows. Stupid rookie mistake. :(
 
 1.24_01 - Sat May 24 13:27:17 2008
 	* Trial version to fix test ordering problem in 1.24
