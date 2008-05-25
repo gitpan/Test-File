@@ -1,4 +1,10 @@
-# $Id: Changes 2543 2008-05-25 00:09:53Z comdog $
+# $Id: Changes 2545 2008-05-25 19:53:44Z comdog $
+
+1.24_03 - Sun May 25 21:52:48 2008
+	* Make some adjustments in checking the error messages in
+	test_files.t to make them work across platforms
+	* Remove links.t from the distribution. It doesn't really
+	test anything yet.
 
 1.24_02 - Sun May 25 02:09:24 2008
 	* Add a binmode before writing to files so they come out right
@@ -15,7 +21,6 @@
 	I also added file_line_count_isnt and file_line_count_between.
 	* There aren't any other improvements, so you don't need to
 	upgrade unless you want the new functions.
-	:wq
 
 1.23 - Wed Apr 23 13:10:39 2008
 	* [BUG FIX] owner_is and group_is now fail if the owner or
