@@ -1,4 +1,4 @@
-# $Id: File.pm 2544 2008-05-25 19:52:33Z comdog $
+# $Id: File.pm 2553 2008-06-10 17:59:14Z comdog $
 package Test::File;
 use strict;
 
@@ -23,7 +23,7 @@ use Test::Builder;
     file_line_count_is file_line_count_isnt file_line_count_between
 	);
 
-$VERSION = '1.24_03';
+$VERSION = '1.25';
 
 {
 use warnings;
