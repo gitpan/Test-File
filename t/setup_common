@@ -1,4 +1,4 @@
-# $Id: setup_common 2541 2008-05-25 00:06:39Z comdog $
+# $Id$
 use strict;
 
 unless( -d 'test_files' )

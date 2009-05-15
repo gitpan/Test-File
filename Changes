@@ -1,4 +1,12 @@
-# $Id: Changes 2554 2008-06-10 18:00:46Z comdog $
+# $Id$
+
+1.26 - Fri May 15 09:31:23 2009
+	Don't create man pages for the module (RT #45977)
+
+1.25_001 - Tue Jul 15 23:59:42 2008
+	* Adding some symlink features, more later
+	* Refactoring and separating many tests - test coverage at 90% now
+	* This is really a test release for my new Module::Release
 
 1.25 - Tue Jun 10 12:59:54 2008
 	* Same as 1.24_03, but with a user release version number. The

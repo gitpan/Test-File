@@ -1,4 +1,4 @@
-#$Id: prereq.t 1642 2005-06-05 13:23:56Z comdog $
+#$Id$
 use Test::More;
 eval "use Test::Prereq 1.0";
 plan skip_all => "Test::Prereq required to test dependencies" if $@;

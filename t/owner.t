@@ -1,4 +1,4 @@
-# $Id: owner.t 2539 2008-05-24 11:26:48Z comdog $
+# $Id$
 use strict;
 
 use Test::Builder::Tester;
@@ -99,10 +99,10 @@ eval
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-plan tests => 14;
+plan tests => 15;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# test group stuff
+# test owner stuff
 owner_is(   $filename, $owner_name, 'owner_is with text username'   );
 owner_is(   $filename, $owner_uid,  'owner_is with numeric UID'     );
 owner_isnt( $filename, $other_name, 'owner_isnt with text username' );
@@ -113,7 +113,7 @@ my $name = 'Intentional owner_is failure with wrong user';
 test_out( "not ok 1 - $name");
 test_diag( 
 	"File [$filename] belongs to $owner_name ($owner_uid), not $other_name " .
-	"($other_uid)\n" .
+	"($other_uid)!\n" .
 	"#   Failed test '$name'\n". 
 	"#   at t/owner.t line " . line_num(+6) . "." 
 	);
@@ -124,7 +124,7 @@ test_test( $name );
 $name = "Intentional owner_is failure with invalid user [$invalid_user_name]";
 test_out( "not ok 1 - $name");
 test_diag( 
-	"User [$invalid_user_name] does not exist on this system\n" .
+	"User [$invalid_user_name] does not exist on this system!\n" .
 	"#   Failed test '$name'\n". 
 	"#   at t/owner.t line " . line_num(+5) . "." 
 	);
@@ -132,15 +132,21 @@ owner_is( $filename, $invalid_user_name, $name );
 test_test( $name );
 
 
+$name = 'owner_isnt for non-existent name';
+test_out( "ok 1 - $name");
+owner_isnt( $filename, $invalid_user_name, $name );
+test_test( $name );
+
+
 $name = 'Intentional owner_isnt failure';
 test_out( "not ok 1 - $name");
 test_diag( 
-	"File [$filename] belongs to $owner_name ($owner_uid)\n" .
+	"File [$filename] belongs to $owner_name ($owner_uid)!\n" .
 	"#   Failed test '$name'\n" . 
 	"#   at t/owner.t line " . line_num(+5) . "."
 	);
-owner_isnt( $filename, $owner_name, "Intentional owner_isnt failure" );
-test_test( "Intentional owner_isnt failure");
+owner_isnt( $filename, $owner_name, $name );
+test_test( $name );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # test group stuff
@@ -155,7 +161,7 @@ test_out( "not ok 1 - $name");
 test_diag( 
 	"File [$filename] belongs to $file_group_name ($file_gid), not ".
 	"$other_group_name " .
-	"($other_gid)\n" .
+	"($other_gid)!\n" .
 	"#   Failed test '$name'\n". 
 	"#   at t/owner.t line " . line_num(+7) . "." 
 	);
@@ -166,7 +172,7 @@ test_test( $name );
 $name = "Intentional group_is failure with invalid group [$invalid_group_name]";
 test_out( "not ok 1 - $name");
 test_diag( 
-	"Group [$invalid_group_name] does not exist on this system\n" .
+	"Group [$invalid_group_name] does not exist on this system!\n" .
 	"#   Failed test '$name'\n". 
 	"#   at t/owner.t line " . line_num(+5) . "." 
 	);
@@ -177,7 +183,7 @@ test_test( $name );
 $name = 'Intentional group_isnt failure';
 test_out( "not ok 1 - $name");
 test_diag( 
-	"File [$filename] belongs to $file_group_name ($file_gid)\n" .
+	"File [$filename] belongs to $file_group_name ($file_gid)!\n" .
 	"#   Failed test '$name'\n" . 
 	"#   at t/owner.t line " . line_num(+5) . "."
 	);
