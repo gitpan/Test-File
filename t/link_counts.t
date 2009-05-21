@@ -2,12 +2,12 @@
 use strict;
 
 use Test::Builder::Tester;
-use Test::More tests => 13; # includes those in t/setup_common
+use Test::More tests => 14; # includes those in t/setup_common
 use Test::File;
 
 my $test_directory = 'test_files';
 SKIP: {
-    skip "setup already done", 5 if -d $test_directory;
+    skip "setup already done", 6 if -d $test_directory;
     require "t/setup_common";
 };
 

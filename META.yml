@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-File
-version:            1.26
+version:            1.27
 abstract:           Check file attributes
 author:
     - brian d foy <bdfoy@cpan.org>
