@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-File
-version:            1.28
+version:            1.29
 abstract:           Check file attributes
 author:
     - brian d foy <bdfoy@cpan.org>
@@ -11,10 +11,13 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
+    perl:                 5.006
     Test::Builder:        0.33
     Test::Builder::Tester:  1.04
     Test::Manifest:       1.14
     Test::More:           0.65
+resources:
+    repository:  git://github.com/briandfoy/test-output.git
 no_index:
     directory:
         - t
@@ -23,3 +26,6 @@ generated_by:       ExtUtils::MakeMaker version 6.50
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
+keywords:
+    - testing
+    - file
