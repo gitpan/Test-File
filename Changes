@@ -1,7 +1,7 @@
 # $Id$
 
-1.29 - Wed Jun 10 00:44:27 2009
-	* Distro cleanup and META_MERGE excitement all around
+1.28_01 - Thu Aug 11 10:04:20 2011
+	* Fixes some Windows tests, I think. RT #57682
 
 1.28 - Sun May 31 23:52:45 2009
 	* Make the man pages after all

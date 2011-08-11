@@ -22,7 +22,7 @@ use Test::Builder;
     file_line_count_is file_line_count_isnt file_line_count_between
 	);
 
-$VERSION = '1.29';
+$VERSION = '1.28_01';
 
 {
 use warnings;
@@ -73,7 +73,7 @@ sub _win32
 	return $^O =~ m/Win/;
 	}
 
-# returns true if symlinkscan't exist
+# returns true if symlinks can't exist
 sub _no_symlinks_here { ! eval { symlink("",""); 1 } }
 
 # owner_is and owner_isn't should skip on OS where the question makes no
@@ -84,6 +84,8 @@ sub _no_symlinks_here { ! eval { symlink("",""); 1 } }
 sub _obviously_non_multi_user
 	{
 	foreach my $os ( qw(dos MacOS) ) { return 1 if $^O eq $os }
+
+	return 0 if $^O eq 'MSWin32';
 
 	eval { my $holder = getpwuid(0) };
 	return 1 if $@;
