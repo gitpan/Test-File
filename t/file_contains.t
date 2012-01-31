@@ -16,9 +16,9 @@ chdir $test_directory or print "bail out! Could not change directories: $!";
 
 my $file = 'min_file';
 my $contents = do { open FH, $file; local $/; <FH> }; close FH;
-my $pattern1    = 'x' x 11; $pattern1    = qr/^ $pattern1    $/mx;
-my $pattern2    = 'x' x 40; $pattern2    = qr/^ $pattern2    $/mx;
-my $bad_pattern = 'x' x 20; $bad_pattern = qr/^ $bad_pattern $/mx;
+my $pattern1    = 'x' x 11; $pattern1    = qr/(?mx:^ $pattern1    $)/;
+my $pattern2    = 'x' x 40; $pattern2    = qr/(?mx:^ $pattern2    $)/;
+my $bad_pattern = 'x' x 20; $bad_pattern = qr/(?mx:^ $bad_pattern $)/;
 
 
 # like : single pattern
@@ -34,7 +34,7 @@ file_contains_like( 'bmoogle', $pattern1 );
 test_test();
 
 SKIP: {
-skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
+skip "Superuser has special privileges", 1, if( $> == 0 or $< == 0 );
 test_out( "not ok 1 - not_readable contains $pattern1" );
 test_diag( 'File [not_readable] is not readable!' );
 test_fail(+1);
@@ -62,7 +62,7 @@ file_contains_unlike( 'bmoogle', $bad_pattern );
 test_test();
 
 SKIP: {
-skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
+skip "Superuser has special privileges", 1, if( $> == 0 or $< == 0 );
 test_out( "not ok 1 - not_readable doesn't contain $bad_pattern" );
 test_diag( 'File [not_readable] is not readable!' );
 test_fail(+1);
@@ -96,7 +96,7 @@ file_contains_like( 'bmoogle', [ $pattern1, $pattern2 ] );
 test_test();
 
 SKIP: {
-skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
+skip "Superuser has special privileges", 1, if( $> == 0 or $< == 0 );
 test_out( "not ok 1 - not_readable contains $pattern1" );
 test_diag( 'File [not_readable] is not readable!' );
 test_fail(+1);
@@ -131,7 +131,7 @@ file_contains_unlike( 'bmoogle', [ $bad_pattern, $bad_pattern ] );
 test_test();
 
 SKIP: {
-skip "Superuser has special priveleges", 1, if( $> == 0 or $< == 0 );
+skip "Superuser has special privileges", 1, if( $> == 0 or $< == 0 );
 test_out( "not ok 1 - not_readable doesn't contain $bad_pattern" );
 test_diag( 'File [not_readable] is not readable!' );
 test_fail(+1);
