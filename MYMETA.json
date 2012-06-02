@@ -44,11 +44,11 @@
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "repository" : {
          "url" : "git://github.com/briandfoy/test-file.git"
       }
    },
-   "version" : "1.33_01"
+   "version" : "1.34"
 }

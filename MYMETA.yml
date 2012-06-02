@@ -28,4 +28,4 @@ requires:
   perl: 5.006
 resources:
   repository: git://github.com/briandfoy/test-file.git
-version: 1.33_01
+version: 1.34
