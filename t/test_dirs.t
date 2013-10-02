@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::Builder::Tester;
-use Test::More 0.88;
+use Test::More 0.95;
 use Test::File;
 
 
