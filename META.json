@@ -4,7 +4,7 @@
       "brian d foy <bdfoy@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.131560",
    "keywords" : [
       "testing",
       "file"
@@ -33,7 +33,7 @@
          "Local"
       ]
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "repository" : {
          "type" : "git",
@@ -41,5 +41,5 @@
          "web" : "https://github.com/briandfoy/test-file"
       }
    },
-   "version" : "1.34_01"
+   "version" : "1.35"
 }
