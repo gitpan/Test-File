@@ -4,7 +4,7 @@ author:
   - 'brian d foy <bdfoy@cpan.org>'
 build_requires: {}
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.131560'
+generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.132830'
 keywords:
   - testing
   - file
@@ -26,4 +26,4 @@ no_index:
     - Local
 resources:
   repository: git://github.com/briandfoy/test-file.git
-version: 1.36
+version: 1.37

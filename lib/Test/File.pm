@@ -24,7 +24,7 @@ use Test::Builder;
 	file_contains_like file_contains_unlike
 	);
 
-$VERSION = '1.36';
+$VERSION = '1.37';
 
 {
 use warnings;
@@ -1050,8 +1050,6 @@ symlinks. If the file does not exist, the test fails.
 
 =cut
 
-=pod
-
 sub symlink_target_is_absolute_ok 
 	{
 	if( _no_symlinks_here() )
@@ -1061,30 +1059,28 @@ sub symlink_target_is_absolute_ok
 		return;
 		}
 
-	my $file = shift;
-	my $name = shift || "symlink $file points to an absolute path";
+	my( $from, $from_base, $to, $to_base, $name ) = @_;
+	my $link     = readlink( $from );
+	my $link_err = defined( $link ) ? '' : $!; # $! doesn't always get reset
+	my $link_abs = abs_path( rel2abs($link, $from_base) );
+	my $to_abs   = abs_path( rel2abs($to, $to_base) );
 
-my ($from, $from_base, $to, $to_base, $name) = @_;
-my $link   = readlink( $from );
-my $link_err = defined( $link ) ? '' : $!; # $! doesn't always get reset
-my $link_abs = abs_path( rel2abs($link, $from_base) );
-my $to_abs  = abs_path( rel2abs($to, $to_base) );
-
-if (defined( $link_abs ) && defined( $to_abs ) && $link_abs eq $to_abs) {
- $Test->ok( 1, $name );
-} else {
- $Test->ok( 0, $name );
- $link   ||= 'undefined';
- $link_abs ||= 'undefined';
- $to_abs  ||= 'undefined';
- $Test->diag("    link: $from");
- $Test->diag("     got: $link");
- $Test->diag("    (abs): $link_abs");
- $Test->diag("  expected: $to");
- $Test->diag("    (abs): $to_abs");
- $Test->diag("  readlink() error: $link_err") if ($link_err);
-}
-}
+	if (defined( $link_abs ) && defined( $to_abs ) && $link_abs eq $to_abs) {
+		$Test->ok( 1, $name );
+		}
+	else {
+		$Test->ok( 0, $name );
+		$link   ||= 'undefined';
+		$link_abs ||= 'undefined';
+		$to_abs  ||= 'undefined';
+		$Test->diag("    link: $from");
+		$Test->diag("     got: $link");
+		$Test->diag("    (abs): $link_abs");
+		$Test->diag("  expected: $to");
+		$Test->diag("    (abs): $to_abs");
+		$Test->diag("  readlink() error: $link_err") if ($link_err);
+		}
+	}
 
 =item dir_exists_ok( DIRECTORYNAME [, NAME ] )
 
@@ -1367,7 +1363,7 @@ Contributed by Dylan Martin
 =cut
 
 sub group_is
- 	{
+	{
 	my $filename      = shift;
 	my $group         = shift;
 	my $name          = ( shift || "$filename belongs to group $group" );
@@ -1386,7 +1382,7 @@ sub group_is
 	my $file_gid  = ( stat $filename )[5];
 
 	unless( defined $file_gid )
- 		{
+		{
 		$Test->skip("stat failed to return group gid for $filename!");
 		return;
 		}
@@ -1397,8 +1393,8 @@ sub group_is
 	unless( defined $real_group )
 		{
 		$Test->diag("File does not belong to $group!");
- 		return $Test->ok( 0, $name );
- 		}
+		return $Test->ok( 0, $name );
+		}
 
 	$Test->diag( "File [$filename] belongs to $real_group ($file_gid), ".
 			"not $group ($group_gid)!" );
@@ -1439,7 +1435,7 @@ sub group_isnt
 	return $Test->ok( 1, $name ) if $file_gid != $group_gid;
 
 	$Test->diag( "File [$filename] belongs to $group ($group_gid)!" );
- 		return $Test->ok( 0, $name );
+		return $Test->ok( 0, $name );
 	}
 
 sub _get_uid
@@ -1522,7 +1518,7 @@ C<file_contains_unlike>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2002-2013 brian d foy.  All rights reserved.
+Copyright (c) 2002-2014 brian d foy.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
