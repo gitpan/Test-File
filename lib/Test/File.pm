@@ -22,9 +22,12 @@ use Test::Builder;
 	group_is group_isnt
 	file_line_count_is file_line_count_isnt file_line_count_between
 	file_contains_like file_contains_unlike
+	file_contains_utf8_like file_contains_utf8_unlike
+	file_contains_encoded_like file_contains_encoded_unlike
+	file_mtime_gt_ok file_mtime_lt_ok file_mtime_age_ok
 	);
 
-$VERSION = '1.37';
+$VERSION = '1.38';
 
 {
 use warnings;
@@ -563,24 +566,67 @@ function as well.
 
 Contributed by Buddy Burden C<< <barefoot@cpan.org> >>.
 
+=item file_contains_utf8_like ( FILENAME, PATTERN [, NAME ] )
+
+The same as C<file_contains_like>, except the file is opened as UTF-8.
+
+=item file_contains_utf8_unlike ( FILENAME, PATTERN [, NAME ] )
+
+The same as C<file_contains_unlike>, except the file is opened as UTF-8.
+
+=item file_contains_encoded_like ( FILENAME, ENCODING, PATTERN [, NAME ] )
+
+The same as C<file_contains_like>, except the file is opened with ENCODING
+
+=item file_contains_encoded_unlike ( FILENAME, ENCODING, PATTERN [, NAME ] )
+
+The same as C<file_contains_unlike>, except the file is opened with ENCODING.
+
 =cut
 
 sub file_contains_like
 	{
 		local $Test::Builder::Level = $Test::Builder::Level + 1;
-		_file_contains(like => "contains", @_);
+		_file_contains(like => "contains", undef, @_);
 	}
 
 sub file_contains_unlike
 	{
 		local $Test::Builder::Level = $Test::Builder::Level + 1;
-		_file_contains(unlike => "doesn't contain", @_);
+		_file_contains(unlike => "doesn't contain", undef, @_);
+	}
+
+sub file_contains_utf8_like
+	{
+		local $Test::Builder::Level = $Test::Builder::Level + 1;
+		_file_contains(like => "contains", 'UTF-8', @_);
+	}
+sub file_contains_utf8_unlike
+	{
+		local $Test::Builder::Level = $Test::Builder::Level + 1;
+		_file_contains(unlike => "doesn't contain", 'UTF-8', @_);
+	}
+
+sub file_contains_encoded_like
+	{
+		local $Test::Builder::Level = $Test::Builder::Level + 1;
+		my $filename = shift;
+		my $encoding = shift;
+		_file_contains(like => "contains", $encoding, $filename, @_);
+	}
+sub file_contains_encoded_unlike
+	{
+		local $Test::Builder::Level = $Test::Builder::Level + 1;
+		my $filename = shift;
+		my $encoding = shift;
+		_file_contains(unlike => "doesn't contain", $encoding, $filename, @_);
 	}
 
 sub _file_contains
 	{
 	my $method   = shift;
 	my $verb     = shift;
+	my $encoding = shift;
 	my $filename = _normalize( shift );
 	my $patterns = shift;
 	my $name     = shift;
@@ -621,6 +667,11 @@ sub _file_contains
 		$Test->diag( "Could not open [$filename]: \$! is [$!]!" );
 		return $Test->ok( 0, $name );
 		}
+
+	if (defined $encoding) {
+		binmode FH, ":encoding($encoding)";
+	}
+
 	local $/ = undef;
 	$file_contents = <FH>;
 	close FH;
@@ -1070,9 +1121,10 @@ sub symlink_target_is_absolute_ok
 		}
 	else {
 		$Test->ok( 0, $name );
-		$link   ||= 'undefined';
+		$link     ||= 'undefined';
 		$link_abs ||= 'undefined';
-		$to_abs  ||= 'undefined';
+		$to_abs   ||= 'undefined';
+
 		$Test->diag("    link: $from");
 		$Test->diag("     got: $link");
 		$Test->diag("    (abs): $link_abs");
@@ -1474,6 +1526,119 @@ sub _get_gid
 	$group_uid;
 	}
 
+
+=item file_mtime_age_ok( FILE [, WITHIN_SECONDS ] [, NAME ] )
+
+Ok if FILE's modified time is WITHIN_SECONDS inclusive of the system's current time.
+This test uses stat() to obtain the mtime. If the file does not exist the test
+returns failure. If stat() fails, the test is skipped.
+
+=cut
+
+sub file_mtime_age_ok
+	{
+	my $filename    = shift;
+	my $within_secs = int shift || 0;
+	my $name        = shift || "$filename mtime within $within_secs seconds of current time";
+
+	my $time        = time();
+
+	my $filetime = _stat_file($filename, 9);
+
+	return if ( $filetime == -1 ); #skip
+
+	return $Test->ok(1, $name) if ( $filetime + $within_secs > $time-1  );
+
+	$Test->diag( "Filename [$filename] mtime [$filetime] is not $within_secs seconds within current system time [$time].");
+	return $Test->ok(0, $name);
+	}
+
+=item file_mtime_gt_ok( FILE, UNIXTIME [, NAME ] )
+
+Ok if FILE's mtime is > UNIXTIME. This test uses stat() to get the mtime. If stat() fails
+this test is skipped. If FILE does not exist, this test fails.
+
+=cut
+
+sub file_mtime_gt_ok
+	{
+	my $filename    = shift;
+	my $time        = int shift;
+	my $name        = shift || "$filename mtime is less than unix timestamp $time";
+
+	my $filetime = _stat_file($filename, 9);
+
+	return if ( $filetime == -1 ); #skip
+
+	return $Test->ok(1, $name) if ( $filetime > $time );
+
+	$Test->diag( "Filename [$filename] mtime [$filetime] not greater than $time" );
+	$Test->ok(0, $name);
+  }
+
+=item file_mtime_lt_ok( FILE, UNIXTIME, [, NAME ] )
+
+Ok if FILE's modified time is < UNIXTIME.  This test uses stat() to get the mtime. If stat() fails
+this test is skipped. If FILE does not exist, this test fails.
+
+=cut
+
+sub file_mtime_lt_ok
+	{
+	my $filename = shift;
+	my $time = int shift;
+	my $name = shift || "$filename mtime less than unix timestamp $time";
+
+  # gets mtime
+	my $filetime = _stat_file($filename, 9);
+
+	return if ( $filetime == -1 ); #skip
+
+	return $Test->ok(1, $name) if ( $filetime < $time );
+
+	$Test->diag( "Filename [$filename] mtime [$filetime] not less than $time" );
+	$Test->ok(0, $name);
+	}
+
+# private function to safely stat a file
+#
+# Arugments:
+# filename     file to perform on
+# attr_pos     pos of the array returned from stat we want to compare. perldoc -f stat
+#
+# Returns:
+# -1        - stat failed
+#  0        - failure (file doesn't exist etc)
+#  filetime - on success, time requested provided by stat
+#
+sub _stat_file
+	{
+	my $filename    = _normalize( shift );
+	my $attr_pos    = shift;
+
+	unless( defined $filename )
+		{
+		$Test->diag( "Filename not specified!" );
+		return 0;
+		}
+
+	unless( -e $filename )
+		{
+		$Test->diag( "Filename [$filename] does not exist!" );
+		return 0;
+		}
+
+	my $filetime = ( stat($filename) )[$attr_pos];
+
+	unless( $filetime )
+		{
+		$Test->diag( "stat of $filename failed" );
+		return -1; #skip on stat failure
+		}
+
+	return $filetime;
+	}
+
 =back
 
 =head1 TO DO
@@ -1515,6 +1680,9 @@ David Wheeler added C<file_line_count_is>.
 Buddy Burden C<< <barefoot@cpan.org> >> provided C<dir_exists_ok>,
 C<dir_contains_ok>, C<file_contains_like>, and
 C<file_contains_unlike>.
+
+xmikew C<< <https://github.com/xmikew> >> provided the C<mtime_age>
+stuff.
 
 =head1 COPYRIGHT AND LICENSE
 

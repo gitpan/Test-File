@@ -26,4 +26,4 @@ no_index:
     - Local
 resources:
   repository: git://github.com/briandfoy/test-file.git
-version: 1.37
+version: 1.38
