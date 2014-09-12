@@ -4,7 +4,7 @@
       "brian d foy <bdfoy@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.86, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.132830",
    "keywords" : [
       "testing",
       "file"
@@ -33,26 +33,6 @@
          "Local"
       ]
    },
-   "prereqs" : {
-      "build" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "0"
-         }
-      },
-      "configure" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "0"
-         }
-      },
-      "runtime" : {
-         "requires" : {
-            "Test::Builder" : "1.001006",
-            "Test::Builder::Tester" : "1.04",
-            "Test::More" : "0.95",
-            "Test::utf8" : "0"
-         }
-      }
-   },
    "release_status" : "stable",
    "resources" : {
       "repository" : {
@@ -61,5 +41,5 @@
          "web" : "https://github.com/briandfoy/test-file"
       }
    },
-   "version" : "1.40"
+   "version" : "1.41"
 }

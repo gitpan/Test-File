@@ -2,12 +2,9 @@
 abstract: 'Check file attributes'
 author:
   - 'brian d foy <bdfoy@cpan.org>'
-build_requires:
-  ExtUtils::MakeMaker: 0
-configure_requires:
-  ExtUtils::MakeMaker: 0
+build_requires: {}
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.86, CPAN::Meta::Converter version 2.120921'
+generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.132830'
 keywords:
   - testing
   - file
@@ -27,11 +24,6 @@ no_index:
   package:
     - version
     - Local
-requires:
-  Test::Builder: 1.001006
-  Test::Builder::Tester: 1.04
-  Test::More: 0.95
-  Test::utf8: 0
 resources:
   repository: git://github.com/briandfoy/test-file.git
-version: 1.40
+version: 1.41
